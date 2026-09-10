@@ -1,195 +1,251 @@
-# Experiment 2 – Identification of Distantly Related Homologous Sequences Using PSI-BLAST
+# Experiment 2: PSI-BLAST Analysis
 
 ## Aim
 
-To utilize Position-Specific Iterative BLAST (PSI-BLAST) to identify distantly related homologous sequences of a given query protein sequence.
+To use PSI-BLAST (Position-Specific Iterated BLAST) to identify homologous protein sequences and observe conserved regions through iterative sequence searching.
 
 ---
 
 ## Objectives
 
-* To understand the principles of PSI-BLAST for detecting remote sequence similarities.
-* To perform a PSI-BLAST search using the NCBI protein database.
-* To analyze the results and identify potential homologs of the query protein.
-* To evaluate the reliability of identified homologs based on E-value and sequence conservation.
+- To retrieve a protein sequence from UniProt.
+- To perform PSI-BLAST analysis using the protein sequence.
+- To identify homologous protein sequences.
+- To compare the results obtained in different PSI-BLAST iterations.
+- To observe sequence similarity, query coverage, and E-values.
+- To understand how iterative searches improve the detection of related proteins.
 
 ---
 
 ## Introduction
 
-Protein BLAST (blastp) is commonly used to identify homologous proteins based on sequence similarity. However, standard BLAST may not effectively detect distantly related proteins having low sequence identity.
+PSI-BLAST (Position-Specific Iterated BLAST) is a sequence similarity search tool used to identify homologous proteins, including proteins that may have relatively low sequence similarity.
 
-PSI-BLAST (Position-Specific Iterated BLAST) improves the sensitivity of sequence searching by constructing a Position-Specific Scoring Matrix (PSSM) from the results of the initial search.
+Unlike a single BLASTP search, PSI-BLAST performs multiple iterations. The significant sequences identified in one iteration are used to build a Position-Specific Scoring Matrix (PSSM), which is then used to search the database again.
 
-In each iteration, the PSSM is refined using aligned sequences. This allows PSI-BLAST to detect remote homologs that may have low sequence identity but can still share structural or functional relationships.
-
-PSI-BLAST is useful in comparative genomics, protein family analysis, and protein function prediction.
+This allows PSI-BLAST to detect more distantly related homologous proteins.
 
 ---
 
-## Query Protein
+# Protein Used
 
-**Protein:** Cytochrome P450 4B1
+The protein sequence used for this experiment was obtained from UniProt.
 
-**Organism:** Homo sapiens (Human)
+| Parameter | Observation |
+|---|---|
+| Protein | Cytochrome P450 4B1 |
+| Gene | CYP4B1 |
+| Organism | Homo sapiens |
+| UniProt Accession | P13584 |
+| Entry Name | CP4B1_HUMAN |
+| Sequence Length | 511 amino acids |
 
-**Gene:** CYP4B1
-
-**UniProt Accession:** P13584
-
-**Sequence Format:** FASTA
-
----
-
-## Tools and Databases Used
-
-* **UniProt** – Retrieval of the query protein sequence in FASTA format
-* **NCBI PSI-BLAST** – Identification of homologous protein sequences
-* **NCBI nr Database** – Non-redundant protein sequence database (specifically ClusteredNR)
-* **NCBI Conserved Domains / Graphic Summary** – Identification of conserved domains
+The FASTA sequence corresponds to human Cytochrome P450 4B1.
 
 ---
 
-## Parameters Used
+# 1. UniProt Protein Search
 
-| Parameter | Value |
-| --- | --- |
-| Search Tool | PSI-BLAST |
-| Database | ClusteredNR (clustered_nr) |
-| E-value Threshold | 0.005 |
-| Number of Iterations | 4 (completed 3 rounds of results) |
-| Query Type | Protein |
-| Query Format | FASTA |
+The UniProt database was searched for **Cytochrome P450 4B1**.
 
----
+The selected protein entry was:
 
-## Procedure
+**UniProt Accession:** P13584  
+**Protein:** Cytochrome P450 4B1  
+**Gene:** CYP4B1  
+**Organism:** Homo sapiens  
+**Length:** 511 amino acids
 
-### 1. Query Protein Preparation
+### Screenshot
 
-1. Open UniProt.
-2. Search for the selected Cytochrome P450 protein.
-3. Open the appropriate protein record.
-4. Download or copy the protein sequence in FASTA format.
-
-### 2. Running PSI-BLAST
-
-1. Open the NCBI Protein BLAST webpage.
-2. Enter the query protein sequence in the query box.
-3. Select **PSI-BLAST** as the search algorithm.
-4. Select the **ClusteredNR (clustered_nr)** database.
-5. Set the E-value threshold to **0.005**.
-6. Set the number of iterations to **3**.
-7. Start the BLAST search.
-8. Record the important results from Iteration 1.
-
-### 3. PSI-BLAST Iterations
-
-1. Examine the significant hits obtained from the first iteration.
-2. Select appropriate sequences for inclusion in the next iteration.
-3. Run **PSI-BLAST Iteration 2**.
-4. Continue the analysis up to **Iteration 3** (or further depending on convergence).
-5. Compare the number and diversity of hits obtained between the iterations.
-
-### 4. Conserved Domain Analysis
-
-1. Examine the **Graphic Summary** section.
-2. Examine the **Conserved Domains** information.
-3. Record the conserved domains identified in the query protein.
-4. Save screenshots of the relevant results.
-
-### 5. Result Comparison
-
-Compare the PSI-BLAST results with standard blastp results using the same query sequence.
-
-The comparison should consider:
-
-* Number of significant hits
-* E-values
-* Percentage identity
-* Query coverage
-* Detection of distant homologs
-* Conserved domains
+![UniProt Search](./screenshots/01-UniProt-search.png)
 
 ---
 
-## Screenshots
+# 2. UniProt FASTA Sequence
 
-The following screenshots document the major steps of the analysis:
+The FASTA sequence of human Cytochrome P450 4B1 was obtained from the UniProt entry.
 
-**1. Query Protein**
+The sequence header identified the protein as:
 
+`sp|P13584|CP4B1_HUMAN Cytochrome P450 4B1`
 
-**2. FASTA Sequence**
+The protein sequence contains **511 amino acids**.
 
+### Screenshot
 
-**3. PSI-BLAST Input Parameters**
-
-
-**4. Iteration 1 Results**
-
-
-**5. Iteration 2 Results**
-
-
-**6. Iteration 3 Results**
-
+![UniProt FASTA](./screenshots/02-UniProt-FASTA.png)
 
 ---
 
-## Results
+# 3. PSI-BLAST Input
 
-PSI-BLAST was used to search the NCBI clustered_nr protein database for homologous sequences of the selected Cytochrome P450 4B1 protein.
+The protein FASTA sequence was entered into the NCBI BLASTP/PSI-BLAST search interface.
 
-The results obtained from each iteration were recorded based on:
+The following settings were observed:
 
-* Number of hits
-* E-value
-* Percentage identity
-* Query coverage
-* Newly detected homologs
-* Conserved domains
+- **Program:** PSI-BLAST
+- **Database:** ClusteredNR (clustered_nr)
+- **Query:** Human Cytochrome P450 4B1 protein sequence
+- **Query Length:** 511 amino acids
 
-### Observation Table
+PSI-BLAST was selected instead of the standard BLASTP option to perform an iterative similarity search.
 
-| Iteration | Number of Hits | Representative E-value | % Identity Range | Query Coverage Range | New Homologs |
-| --- | --- | --- | --- | --- | --- |
-| Iteration 1 | 500 | 0.0 | ~85.13% - 100.00% | 98% - 100% | Base Homologs Established |
-| Iteration 2 | 500 | 0.0 | ~83.56% - 100.00% | 98% - 100% | Sequences added to build PSSM |
-| Iteration 3 | 500 | 0.0 | ~59.45% - 100.00% | 98% - 100% | Distant homologs identified (e.g., 59.45% identity hit KAN4279789.1) |
+### Screenshot
 
-### Conserved Domains
-
-**Domain identified:** Cytochrome P450 family domain
-
-**Domain information:** This domain is conserved across the sequences and is responsible for the core catalytic function of the P450 enzymes. *(Note: Complete domain visualization requires checking the Graphic Summary/Conserved Domains tab in the NCBI output).*
+![PSI-BLAST Input](./screenshots/03-PSI-BLAST-input.png)
 
 ---
 
-## Interpretation
+# 4. PSI-BLAST Iteration 1
 
-PSI-BLAST provides increased sensitivity compared with standard blastp for identifying distantly related homologous sequences.
+The first PSI-BLAST iteration produced significant matches to Cytochrome P450 4B1-related proteins.
 
-As the iterations proceed, the position-specific profile is refined and may identify additional sequences with lower sequence identity. This was successfully demonstrated by Iteration 3, where distant hits with percent identities dropping into the 50-60% range (e.g., 59.45% for uncharacterized protein FRY00_015135) were identified with high confidence (E-value 0.0).
+The results showed very high sequence similarity among several homologous proteins.
 
-The E-values and sequence conservation should be monitored carefully during each iteration to avoid the inclusion of false-positive sequences and profile drift.
+### Representative Results
 
-Convergence of the PSI-BLAST profile indicates that no significant new homologous sequences are being detected.
+| Organism/Group | Protein | Query Cover | E-value | Percent Identity |
+|---|---|---:|---:|---:|
+| Primates | Cytochrome P450 4B1 isoform b [Homo sapiens] | 100% | 0.0 | 100.00% |
+| Primates | Cytochrome P450 4B1 isoform c [Homo sapiens] | 100% | 0.0 | 96.88% |
+| Rhesus monkey | Cytochrome P450 4B1 isoform X2 | 100% | 0.0 | 92.95% |
+| Flying lemurs | Predicted Cytochrome P450 4B1 isoform | 100% | 0.0 | 87.70% |
+| Moles and shrew-moles | Predicted Cytochrome P450 4B1 | 100% | 0.0 | 86.11% |
+| Placentals | Cytochrome P450 4B1 | 100% | 0.0 | 86.30% |
+| Rodents | Cytochrome P450 4B1 [Mus musculus] | 100% | 0.0 | 85.13% |
+
+The first iteration showed strong similarity between the human CYP4B1 sequence and related Cytochrome P450 4B1 proteins from different organisms.
+
+### Screenshot
+
+![PSI-BLAST Iteration 1](./screenshots/04-PSI-BLAST-iteration%201.png)
 
 ---
 
-## Conclusion
+# 5. PSI-BLAST Iteration 2
 
-PSI-BLAST was successfully performed for Cytochrome P450 4B1 (Homo sapiens) using the NCBI ClusteredNR database.
+In the second iteration, the PSSM generated from the previous iteration was used to search for additional related sequences.
 
-The iterative search helped identify homologous protein sequences and analyze their sequence similarity, expanding detection from close relatives (85%+ identity) in the first iteration to much more distant homologs (~59% identity) by the third iteration.
+The results continued to show highly significant matches.
 
-The experiment demonstrated the usefulness of PSI-BLAST for detecting distantly related homologous proteins that may not be identified effectively using standard blastp alone.
+### Representative Results
+
+| Organism/Group | Protein | Query Cover | E-value | Percent Identity |
+|---|---|---:|---:|---:|
+| Moles and shrew-moles | Predicted Cytochrome P450 4B1 | 100% | 0.0 | 86.11% |
+| Flying lemurs | Predicted Cytochrome P450 4B1 isoform | 100% | 0.0 | 87.70% |
+| Cape golden mole | Predicted Cytochrome P450 4B1-like | 100% | 0.0 | 85.32% |
+| Southern two-toed sloth | Cytochrome P450 4B1 | 100% | 0.0 | 86.30% |
+| Primates | Cytochrome P450 4B1 isoform b [Homo sapiens] | 100% | 0.0 | 100.00% |
+| Rodents | Cytochrome P450 4B1 [Mus musculus] | 100% | 0.0 | 85.13% |
+| Placentals | Cytochrome P450 4B1 | 100% | 0.0 | 86.30% |
+
+The second iteration continued to identify closely related Cytochrome P450 4B1 proteins with complete or near-complete query coverage.
+
+### Screenshot
+
+![PSI-BLAST Iteration 2](./screenshots/05-PSI-BLAST-iteration%202.png)
 
 ---
 
-## References
+# 6. PSI-BLAST Iteration 3
 
-* UniProt: [https://www.uniprot.org/](https://www.uniprot.org/)
-* NCBI BLAST: [https://blast.ncbi.nlm.nih.gov/](https://blast.ncbi.nlm.nih.gov/)
-* NCBI Conserved Domains Database: [https://www.ncbi.nlm.nih.gov/Structure/cdd/](https://www.ncbi.nlm.nih.gov/Structure/cdd/)
+The third iteration was performed using the PSSM generated during the previous iteration.
+
+The results again showed highly significant matches to Cytochrome P450 4B1-related sequences.
+
+### Representative Results
+
+| Organism/Group | Protein | Query Cover | E-value | Percent Identity |
+|---|---|---:|---:|---:|
+| Moles and shrew-moles | Predicted Cytochrome P450 4B1 | 100% | 0.0 | 86.11% |
+| Flying lemurs | Predicted Cytochrome P450 4B1 isoform | 100% | 0.0 | 87.70% |
+| Cape golden mole | Predicted Cytochrome P450 4B1-like | 100% | 0.0 | 85.32% |
+| Southern two-toed sloth | Cytochrome P450 4B1 | 100% | 0.0 | 86.30% |
+| Rodents | Cytochrome P450 4B1 [Mus musculus] | 100% | 0.0 | 85.13% |
+| Greater mouse-tailed bat | Cytochrome P450 4B1 | 100% | 0.0 | 85.32% |
+| Southern tamandua | Cytochrome P450 4B1 | 100% | 0.0 | 83.76% |
+| Bats | Cytochrome P450 4B1-like | 100% | 0.0 | 84.38% |
+| Japanese fox | Cytochrome P450 4F3 isoform X1 | 98% | 0.0 | 86.53% |
+
+The third iteration continued to identify proteins with strong similarity to the query sequence.
+
+### Screenshot
+
+![PSI-BLAST Iteration 3](./screenshots/06-PSI-BLAST-iteration%203.png)
+
+---
+
+# Comparison of PSI-BLAST Iterations
+
+| Parameter | Iteration 1 | Iteration 2 | Iteration 3 |
+|---|---|---|---|
+| Query | Human CYP4B1 | Human CYP4B1 | Human CYP4B1 |
+| Query Length | 511 aa | 511 aa | 511 aa |
+| Database | ClusteredNR | ClusteredNR | ClusteredNR |
+| Query Coverage | Mostly 100% | Mostly 100% | Mostly 100% |
+| E-value | 0.0 for representative hits | 0.0 for representative hits | 0.0 for representative hits |
+| Sequence Identity | Up to 100% | Up to 100% | Up to 100% |
+| PSSM | Initial profile generated | Updated profile used | Further updated profile used |
+
+---
+
+# Result
+
+PSI-BLAST successfully identified homologous proteins related to human Cytochrome P450 4B1.
+
+The query protein was:
+
+**Cytochrome P450 4B1 (CYP4B1), Homo sapiens**  
+**UniProt Accession:** P13584  
+**Length:** 511 amino acids
+
+The PSI-BLAST iterations produced highly significant matches with very low E-values and high sequence identities. Most representative hits showed **100% query coverage**, indicating strong similarity across the query sequence.
+
+The results included Cytochrome P450 4B1-related proteins from primates, rodents, bats, moles, flying lemurs, and other mammals.
+
+---
+
+# Conclusion
+
+PSI-BLAST was successfully used to identify homologous proteins related to human Cytochrome P450 4B1.
+
+The iterative searches demonstrated that PSI-BLAST can identify and compare related protein sequences using a position-specific scoring matrix. The high sequence identities, complete query coverage, and highly significant E-values observed in the results indicate strong evolutionary relationships among many of the identified proteins.
+
+---
+
+# Key Learning
+
+- UniProt can be used to retrieve protein sequences and annotations.
+- PSI-BLAST performs iterative protein similarity searches.
+- A PSSM is generated and updated during PSI-BLAST iterations.
+- E-value indicates the statistical significance of a sequence match.
+- Query coverage indicates how much of the query sequence is aligned.
+- Percent identity indicates the proportion of identical amino acids in the alignment.
+- Comparing multiple iterations helps in identifying and studying homologous proteins.
+
+---
+
+# Tools Used
+
+- UniProt
+- NCBI BLAST / PSI-BLAST
+- ClusteredNR (clustered_nr)
+
+---
+
+# Repository Structure
+
+```text
+02-PSI-BLAST/
+│
+├── README.md
+│
+└── screenshots/
+    ├── 01-UniProt-search.png
+    ├── 02-UniProt-FASTA.png
+    ├── 03-PSI-BLAST-input.png
+    ├── 04-PSI-BLAST-iteration 1.png
+    ├── 05-PSI-BLAST-iteration 2.png
+    └── 06-PSI-BLAST-iteration 3.png
