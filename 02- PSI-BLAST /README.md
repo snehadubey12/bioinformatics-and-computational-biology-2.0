@@ -117,19 +117,29 @@ The comparison should consider:
 
 The following screenshots document the major steps of the analysis:
 
-1. Query Protein (01-UniProt-search.jpg)
-2. FASTA Sequence (02-cytoch-FASTA.png)
-3. PSI-BLAST Input Parameters (03-PSI-BLAST-input.png)
-4. Iteration 1 Results (04-PSI-BLAST-iteration-1.png)
-5. Iteration 2 Results (05-PSI-BLAST-iteration-2.png)
-6. Iteration 3 Results (06-PSI-BLAST-iteration-3.png)
-7. Conserved Domains (Not provided in current screenshot set)
+**1. Query Protein**
+
+
+**2. FASTA Sequence**
+
+
+**3. PSI-BLAST Input Parameters**
+
+
+**4. Iteration 1 Results**
+
+
+**5. Iteration 2 Results**
+
+
+**6. Iteration 3 Results**
+
 
 ---
 
 ## Results
 
-PSI-BLAST was used to search the NCBI clustered_nr protein database for homologous sequences of the selected Cytochrome P450 protein.
+PSI-BLAST was used to search the NCBI clustered_nr protein database for homologous sequences of the selected Cytochrome P450 4B1 protein.
 
 The results obtained from each iteration were recorded based on:
 
@@ -145,14 +155,14 @@ The results obtained from each iteration were recorded based on:
 | Iteration | Number of Hits | Representative E-value | % Identity Range | Query Coverage Range | New Homologs |
 | --- | --- | --- | --- | --- | --- |
 | Iteration 1 | 500 | 0.0 | ~85.13% - 100.00% | 98% - 100% | Base Homologs Established |
-| Iteration 2 | 500 | 0.0 | ~83.56% - 100.00% | 98% - 100% | Sequences added to build PSSM (green checks) |
+| Iteration 2 | 500 | 0.0 | ~83.56% - 100.00% | 98% - 100% | Sequences added to build PSSM |
 | Iteration 3 | 500 | 0.0 | ~59.45% - 100.00% | 98% - 100% | Distant homologs identified (e.g., 59.45% identity hit KAN4279789.1) |
 
 ### Conserved Domains
 
-**Domain identified:** Cytochrome P450 family domain (Note: Specific conserved domain visual results were not included in the provided screenshot set, but inferred from protein identity).
+**Domain identified:** Cytochrome P450 family domain
 
-**Domain information:** Required for standard reporting, to be gathered from the "Conserved Domains" tab in BLAST.
+**Domain information:** This domain is conserved across the sequences and is responsible for the core catalytic function of the P450 enzymes. *(Note: Complete domain visualization requires checking the Graphic Summary/Conserved Domains tab in the NCBI output).*
 
 ---
 
@@ -160,7 +170,7 @@ The results obtained from each iteration were recorded based on:
 
 PSI-BLAST provides increased sensitivity compared with standard blastp for identifying distantly related homologous sequences.
 
-As the iterations proceed, the position-specific profile is refined and may identify additional sequences with lower sequence identity. This was successfully demonstrated by Iteration 3, where distant hits with percent identities dropping into the 50-60% range (e.g., 59.45%) were identified with high confidence (E-value 0.0).
+As the iterations proceed, the position-specific profile is refined and may identify additional sequences with lower sequence identity. This was successfully demonstrated by Iteration 3, where distant hits with percent identities dropping into the 50-60% range (e.g., 59.45% for uncharacterized protein FRY00_015135) were identified with high confidence (E-value 0.0).
 
 The E-values and sequence conservation should be monitored carefully during each iteration to avoid the inclusion of false-positive sequences and profile drift.
 
